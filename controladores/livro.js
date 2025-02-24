@@ -1,11 +1,11 @@
 import LivroServico from "../servicos/livro.js";
 
-const servicoLivro = new LivroServico();
+const servico = new LivroServico();
 
 class LivroControlador {
     static getLivros(req, res) {
         try {
-            const livros = servicoLivro.getTodosOslivros();
+            const livros = servico.getTodosOslivros();
 
             if (livros.length === 0) {
                 return res.status(404).json({ mensagem: "Nenhum livro encontrado" });
@@ -25,7 +25,7 @@ class LivroControlador {
                 return res.status(422).json({ mensagem: "Id do livro inválido" });
             };
         
-            const livro = servicoLivro.getLivroPorId(id);
+            const livro = servico.getLivroPorId(id);
 
             if (!livro) {
                 return res.status(404).json({ mensagem: "Nenhum livro encontrado" });
@@ -45,7 +45,7 @@ class LivroControlador {
                 return res.status(422).json({ mensagem: "O campo nome é obrigatório" });
             }
 
-            const livro = servicoLivro.insereLivro(novoLivro);
+            const livro = servico.insereLivro(novoLivro);
             res.status(201).json(livro);
         } catch (erro) {
             res.status(500).json({ mensagem: erro.message });
@@ -61,7 +61,7 @@ class LivroControlador {
                 return res.status(422).json({ mensagem: "Id do livro inválido" });
             };
     
-            const livroAtualizado = servicoLivro.modificaLivro(id, body);
+            const livroAtualizado = servico.modificaLivro(id, body);
 
             if (!livroAtualizado) {
                 return res.status(404).json({ mensagem: "Nenhum livro encontrado" });
@@ -81,7 +81,7 @@ class LivroControlador {
                 return res.status(422).json({ mensagem: "Id do livro inválido" });
             };
     
-            const livroExcluido = servicoLivro.deletaLivroPorId(id);
+            const livroExcluido = servico.deletaLivroPorId(id);
             
             if (!livroExcluido) {
                 res.status(404).json({ mensagem: "Nenhum livro encontrado" });

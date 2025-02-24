@@ -44,6 +44,7 @@ class LivroRepositorio {
 
         const livrosFiltrados = livros.filter((livro) => livro.id !== Number(id));
         fs.writeFileSync(caminhoDoArquivo, JSON.stringify(livrosFiltrados));
+        return true;
     }
 
     #carregaArquivo(caminhoDoArquivo) {

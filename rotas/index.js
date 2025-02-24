@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import rotaLivro from './livro.js';
+import rotaFavorito from './favorito.js';
 
 const router = (app) => {
     app.use(
@@ -10,7 +11,8 @@ const router = (app) => {
 
     app.use(
         '/livros',
-        rotaLivro
+        rotaFavorito,
+        rotaLivro,
     );
 }
 

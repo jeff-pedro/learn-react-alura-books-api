@@ -8,6 +8,6 @@ rotaLivro
     .get('/:id', LivroControlador.getLivro)
     .post('/', LivroControlador.postLivro)
     .patch('/:id', LivroControlador.patchLivro)
-    .delete('/:id', LivroControlador.deletaLivro)
+    .delete(':id', LivroControlador.deletaLivro)
 
 export default rotaLivro;
